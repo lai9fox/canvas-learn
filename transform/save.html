@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <button id="btn">RESTORE</button>
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext ? canvas.getContext('2d') : null;
+    ctx.fillStyle = 'red';
+    ctx.fillRect(10, 10, 50, 50);
+    ctx.save();
+
+    // ctx.clearRect(0, 0, 300, 150);
+    ctx.fillStyle = 'skyblue';
+    ctx.fillRect(30, 30, 100, 100);
+    
+    document.getElementById('btn').addEventListener('click', () => {
+      console.log(1);
+      console.log(ctx);
+      ctx.restore();
+    });
+  </script>
+</body>
+</html>

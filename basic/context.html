@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas">
+    Sorry, It seems like that your browser doesn't support canvas!
+  </canvas>
+  <script>
+    const canvas = document.getElementById('canvas');
+    console.log(canvas);
+    const context = canvas.getContext('2d');
+    console.log(context);
+    context.fillStyle = 'rgb(200, 0, 0)';
+    context.fillRect(10, 10, 55, 50);
+    context.clearRect(15, 15, 30, 30);
+    context.strokeRect(12, 12, 40, 40);
+  </script>
+</body>
+
+</html>

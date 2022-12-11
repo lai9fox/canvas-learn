@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #canvas {
+      border: 1px solid;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="600px" height="300px"></canvas>
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext ? canvas.getContext('2d') : null;
+    
+    const alphabetG = new Path2D();
+    alphabetG.moveTo(150, 75);
+    alphabetG.arc(150, 75, 50, 0, Math.PI * 1.7);
+    ctx.stroke(alphabetG);
+
+    const svgPath = new Path2D("M10 10 h 80 v 80 h -80 Z");
+    ctx.stroke(svgPath);
+
+  </script>
+</body>
+</html>
