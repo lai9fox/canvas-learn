@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="600px" height="300px">123</canvas>
+    <script>
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext ? canvas.getContext("2d") : null;
+      let start = 0; // 0 - 360
+      let radius = Math.PI / 180;
+      function circle(timestamp) {
+        ctx.save();
+        ctx.fillStyle = "rgba(255, 255, 255, 0.2)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.beginPath();
+        ctx.strokeStyle = `rgb(${360 - start}, ${start}, ${start})`;
+        ctx.arc(150, 75, 60, start * radius, (start + 30) * radius, false);
+        ctx.lineTo(150, 75);
+
+        // ctx.moveTo(210, 75);
+        ctx.arc(150, 75, 60, -(start + 30) * radius, -start * radius);
+
+        ctx.stroke();
+        ctx.closePath();
+        start = (start + 2) % 360;
+        ctx.restore();
+        requestAnimationFrame(circle);
+      }
+      // setInterval(circle, 100);
+      // circle();
+      requestAnimationFrame(circle);
+    </script>
+  </body>
+</html>

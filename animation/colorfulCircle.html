@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="600px" height="300px">123</canvas>
+    <script>
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext ? canvas.getContext("2d") : null;
+      let percent = 0;
+      const color = ctx.createLinearGradient(0, 75, 300, 75);
+      color.addColorStop(0, "#f82c08");
+      color.addColorStop(0.3, "#f8e808");
+      color.addColorStop(0.6, "#b0f808");
+      color.addColorStop(1, "#08f81c");
+      function infiniteDraw() {
+        ctx.clearRect(0, 0, 300, 150);
+
+        ctx.fillStyle = color;
+        ctx.fillRect(0, 65, (percent / 100) * 300, 20);
+        percent = (percent + 1) % 100;
+        requestAnimationFrame(infiniteDraw);
+      }
+
+      // setInterval(infiniteDraw, 100);
+      requestAnimationFrame(infiniteDraw);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="600px" height="300px"></canvas>
+    <script>
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext ? canvas.getContext("2d") : null;
+      let rotate = 0;
+      function tj() {
+
+        ctx.clearRect(0, 0, 600, 300);
+
+        ctx.save();
+        ctx.translate(300, 150);
+        ctx.rotate(Math.PI / 180 * rotate);
+        ctx.beginPath();
+        ctx.strokeStyle = 'black';
+        
+        ctx.arc(0, 0, 100, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.fillStyle = 'black';
+        ctx.arc(0, 0, 100, 0, Math.PI);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.fillStyle = 'white';
+        ctx.arc(-50, 0, 50, 0, Math.PI);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.fillStyle = 'black';
+        ctx.arc(-50, 0, 10, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.fillStyle = 'black';
+        ctx.arc(50, 0, 50, Math.PI, 0);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.fillStyle = 'white';
+        ctx.arc(50, 0, 10, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.restore();
+        rotate = (rotate + 1) % 360;
+        requestAnimationFrame(tj);
+      }
+      // setInterval(tj, 150);
+      requestAnimationFrame(tj);
+      // tj();
+    </script>
+  </body>
+</html>
